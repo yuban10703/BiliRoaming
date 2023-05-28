@@ -9,12 +9,14 @@ async def api_playurl(request: Request):
     # print(request.)
     url = f"https://api.bilibili.com/pgc/player/web/playurl?{request.query_params}"
     headers = dict(request.headers.items())
-    headers.pop("host",None)
-    headers.pop("connection",None)
-    headers.pop("accept-encoding",None)
+
     # print(headers)
     async with httpx.AsyncClient(
-            headers=headers,
+            headers={
+                "user-agent": headers.get("user-agent"),
+                "origin": headers.get("origin"),
+                "referer": headers.get("referer")
+            },
             timeout=10,
     ) as client:
         res = await client.get(url)
@@ -27,12 +29,14 @@ async def api_playurl(request: Request):
     # print(request.)
     url = f"https://api.bilibili.com/pgc/player/api/playurl?{request.query_params}"
     headers = dict(request.headers.items())
-    headers.pop("host",None)
-    headers.pop("connection",None)
-    headers.pop("accept-encoding",None)
+
     # print(headers)
     async with httpx.AsyncClient(
-            headers=headers,
+            headers={
+                "user-agent": headers.get("user-agent"),
+                "origin": headers.get("origin"),
+                "referer": headers.get("referer")
+            },
             timeout=10,
     ) as client:
         res = await client.get(url)
