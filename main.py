@@ -3,7 +3,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-origins = ["*"]
+origins = ["https://www.bilibili.com"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,  # 允许访问的源
