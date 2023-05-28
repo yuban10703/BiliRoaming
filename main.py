@@ -14,7 +14,7 @@ app.add_middleware(
 
 
 @app.get("/pgc/player/web/playurl")
-async def api_playurl(request: Request):
+async def web_playurl(request: Request):
     # print(request.)
     url = f"https://api.bilibili.com/pgc/player/web/playurl?{request.query_params}"
     headers = dict(request.headers.items())
